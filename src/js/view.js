@@ -4,17 +4,18 @@ import {toggleListItemsDisplay, changeFilters} from './lib/filters';
 export function render(el, state) {
     const todoItems = state.todos.map(renderTodoItem).join('');
 
-    var filters = document.getElementsByClassName("filter");
+    if(isEnabled('filter')) {
+        var filters = document.getElementsByClassName('filter');
 
-    var filterChecked = 'all';
+        var filterChecked = 'all';
 
-    for(var i = 0; i != filters.length; ++i)
-    {
-        if(filters[i].checked)
-            filterChecked = filters[i].value;
+        for(var i = 0; i != filters.length; ++i)
+        {
+            if(filters[i].checked)
+                filterChecked = filters[i].value;
+        }
+
     }
-
-    console.log(filterChecked);
 
     el.innerHTML = renderApp(
         renderInput(),
@@ -22,47 +23,37 @@ export function render(el, state) {
         renderFilters()
     );
 
-    document.getElementById(filterChecked).checked = true;
-    changeFilters(filterChecked);
+    if(isEnabled('filter')) {
+
+        document.getElementById(filterChecked).checked = true;
+        changeFilters(filterChecked);
+
+    }
 
 }
 
 function renderApp(input, todoList, filters) {
 
-    if(!isEnabled('filters')) {
+    if(!isEnabled('filter')) {
         filters = '';
     }
 
     if(isEnabled('renderBottom')) {
-        return renderAddTodoAtBottom(input, todoList, filters);
+        if(isEnabled('filterTop'))
+            return renderViews(filters, todoList, input);
+        else
+            return renderViews(todoList, input,filters);
     } else {
-        return renderAddTodoAtTop(input, todoList, filters);
+        return renderViews(input, filters, todoList);
     }
 
 }
 
-function renderWithFilters(input, todoList, filters) {
+function renderViews(section1, section2, section3) {
     return `<div id="app">
-        ${input}
-        ${filter}
-        ${todoList}
-    </div>`;
-}
-
-
-function renderAddTodoAtTop(input, todoList, filters) {
-    return `<div id="app">
-        ${input}
-        ${filters}
-        ${todoList}
-    </div>`;
-}
-
-function renderAddTodoAtBottom(input, todoList, filters) {
-    return `<div id="app">
-        ${todoList}
-        ${input}
-        ${filters}
+        ${section1}
+        ${section2}
+        ${section3}
     </div>`;
 }
 
