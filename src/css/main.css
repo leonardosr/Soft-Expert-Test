@@ -1,20 +1,137 @@
 html, body, .todo {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+    color: #898989;
+}
+
+input[type=radio], input[type=checkbox] {
+	display: none;
+}
+
+input[type="radio"]:checked + span {
+	background: #E8E8E8;
+}
+
+input[type="radio"]:checked + span,
+input[type="checkbox"]:checked + span {
+	background: #E8E8E8;
+}
+
+.custom-radio {
+    display: inline-block;
+    margin-right: 10px;
+    min-width: 45px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.custom-radio span{
+	border: 1px solid #898989;
+    border-radius: 50px;
+    display: inline-block;
+    height: 14px;
+    left: 0;
+    margin-bottom: -3px;
+    margin-right: 10px;
+    position: absolute;
+    width: 14px;
+}
+
+.custom-checkbox {
+    margin-right: 30px;
+    min-width: 60px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.custom-checkbox span{
+	border: 1px solid #898989;
+    border-radius: 4px;
+    height: 14px;
+    left: 0;
+    margin-bottom: -3px;
+    margin-right: 10px;
+    position: absolute;
+    width: 14px;
+}
+
+#app {
+    background: #F7F7F7 none repeat scroll 0 0;
+    border-radius: 10px;
+    margin: 65px;
+    max-width: 320px;
+    padding: 25px 15px;
+    border: 1px solid #898989;
+}
+
+h2.title {
+	margin: 0 10px;
+	font-weight: 400;
+	color: #898989;
 }
 
 .todo {
     list-style-type: none;
+    padding-left: 14px;
 }
 
-.todo__input, .todo__item {
+.todo li {
+	margin-bottom: 10px;
+}
+
+.todo__input {
     margin: 10px;
+	position: relative;
 }
 
 .todo__item--done {
     text-decoration: line-through;
 }
 
+.filters {
+	margin-bottom: 15px;
+    margin-top: 15px;
+    padding-left: 14px;
+}
+
 #addTodo {
-    margin-left: 10px;
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #898989;
+    border-radius: 50px;
+    bottom: 8px;
+    color: #898989;
+    height: 22px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 22px;
+    cursor: pointer;
+    left: 1px;
+}
+
+#addTodo:hover {
+	background: #E8E8E8;
+}
+
+#todoInput {
+	border-width: 0px 0px 1px 0px;
+	border-color: #898989;
+	color: #898989;
+	border-style: solid;
+	height: 36px;
+	margin-left: 2px;
+	padding-left: 30px;
+	width: 260px;
+	font-size: 16px;
+	background: #F7F7F7;
+}
+
+#addTodo::before {
+    content: "+";
+    font-size: 22px;
+    font-weight: 100;
+    left: 4px;
+    position: absolute;
+    top: -4.5px;
 }

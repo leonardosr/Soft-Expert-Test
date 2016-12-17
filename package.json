@@ -20,5 +20,9 @@
     "css-loader": "^0.23.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.11"
+  },
+  "devDependencies": {
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3"
   }
 }

@@ -50,7 +50,7 @@ function renderApp(input, todoList, filters) {
 }
 
 function renderViews(section1, section2, section3) {
-    return `<div id="app">
+    return `<div id="app"><h2 class="title">Lista de Tarefas</h2>
         ${section1}
         ${section2}
         ${section3}
@@ -58,7 +58,7 @@ function renderViews(section1, section2, section3) {
 }
 
 function renderInput() {
-    return `<div class="todo__input"><input type="text" id="todoInput"><button id="addTodo">Add</button></div>`;
+    return `<div class="todo__input"><button id="addTodo"></button><input type="text" id="todoInput" placeholder="Adicione uma nova tarefa"></div>`;
 }
 
 function renderTodos(todoItems) {
@@ -68,13 +68,13 @@ function renderTodos(todoItems) {
 function renderTodoItem(todo) {
     const todoClass = `todo__item todo__item--${todo.done ? 'done' : 'open'}`;
     return `<li class="${todoClass}" style="display:list-item;">
-        <label><input class="js_toggle_todo" type="checkbox" data-id="${todo.id}"${todo.done ? ' checked' : ''}>
-        ${todo.text}
+        <label class="custom-checkbox"><input class="js_toggle_todo" type="checkbox" data-id="${todo.id}"${todo.done ? ' checked' : ''}>
+        ${todo.text}<span></span>
     </label></li>`;
 }
 
 function renderFilters() {
-    return `<label><input type="radio" class="filter" name="filter" id="all" value="all" checked>Mostrar todos</label>
-            <label><input type="radio" class="filter" name="filter" id="open" value="open">Somente abertos</label>
-            <label><input type="radio" class="filter" name="filter" id="done" value="done">Somente fechados</label>`;
+    return `<div class="filters"><label class="custom-radio"><input type="radio" class="filter" name="filter" id="all" value="all" checked>Todos<span></span></label>
+            <label class="custom-radio"><input type="radio" class="filter" name="filter" id="open" value="open">Abertos<span></span></label>
+            <label class="custom-radio"><input type="radio" class="filter" name="filter" id="done" value="done">Fechados<span></span></label></div>`;
 }
