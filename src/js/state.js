@@ -52,6 +52,7 @@ function todoChangeHandler(state, change) {
                 text: change.text,
                 done: false
             });
+            localStorage.setItem("todos", JSON.stringify(state.todos));
             break;
         case 'TODO_TOGGLE_DONE':
             for(let todo of state.todos) {
@@ -60,17 +61,20 @@ function todoChangeHandler(state, change) {
                     break;
                 }
             }
+            localStorage.setItem("todos", JSON.stringify(state.todos));
             break;
         case 'CHANGE_FILTER':
             for(let filter of state.filters) {
                 filter.checked = (filter.value === change.filter) ? 'checked' : '';
             }
 
-            console.log(state.filters);
-
             break;
 
     }
 }
+
+if(localStorage.getItem("todos"))
+    initialState.todos = JSON.parse(localStorage.getItem("todos"));
+
 
 export const todos = createStore(todoChangeHandler, initialState);
