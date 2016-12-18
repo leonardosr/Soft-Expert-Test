@@ -12,3 +12,10 @@ export function addTodo(text) {
         text
     }
 }
+
+export function changeFilter(filter) {
+    return {
+        type: 'CHANGE_FILTER',
+        filter
+    }
+}

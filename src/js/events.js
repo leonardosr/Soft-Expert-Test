@@ -1,7 +1,6 @@
 import {todos} from './state';
 import {listen} from './lib/events';
-import {toggleListItemsDisplay, changeFilters} from './lib/filters';
-import {addTodo, toggleTodoState} from './actions';
+import {addTodo, toggleTodoState, changeFilter} from './actions';
 
 export function registerEventHandlers() {
     listen('click', '#addTodo', event => {
@@ -27,7 +26,7 @@ export function registerEventHandlers() {
 
     listen('click', '.filter', event => {
 
-        changeFilters(event.target.value);
+        todos.dispatch(changeFilter(event.target.value));
 
     });
 

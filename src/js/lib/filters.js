@@ -1,4 +1,4 @@
-export function toggleListItemsDisplay(className, display) {
+/*export function toggleListItemsDisplay(className, display) {
 
     var listItems = document.getElementsByClassName('todo__item todo__item--' + className );
 
@@ -28,4 +28,4 @@ export function changeFilters(value) {
 	        return false;
 	}
 
-}
+}*/

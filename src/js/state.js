@@ -22,7 +22,26 @@ const initialState = {
             text: 'Filter todos by text',
             done: false
         }
+    ],
+
+    filters : [
+        {
+            name: 'Todos',
+            value: 'all',
+            checked: 'checked'
+        },
+        {
+            name: 'Abertos',
+            value: 'open',
+            checked: ''
+        },
+        {
+            name: 'Fechados',
+            value: 'done',
+            checked: ''
+        }
     ]
+
 };
 
 function todoChangeHandler(state, change) {
@@ -42,6 +61,15 @@ function todoChangeHandler(state, change) {
                 }
             }
             break;
+        case 'CHANGE_FILTER':
+            for(let filter of state.filters) {
+                filter.checked = (filter.value === change.filter) ? 'checked' : '';
+            }
+
+            console.log(state.filters);
+
+            break;
+
     }
 }
 
