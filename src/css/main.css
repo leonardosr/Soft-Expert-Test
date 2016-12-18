@@ -18,6 +18,62 @@ input[type="checkbox"]:checked + span {
 	background: #E8E8E8;
 }
 
+#app {
+    background: #F7F7F7 none repeat scroll 0 0;
+    border-radius: 10px;
+    margin: 65px;
+    max-width: 320px;
+    padding: 25px 15px;
+    border: 1px solid #898989;
+}
+
+#addTodo {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #898989;
+    border-radius: 50px;
+    bottom: 8px;
+    color: #898989;
+    height: 22px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 22px;
+    cursor: pointer;
+    left: 1px;
+}
+
+#addTodo:hover {
+    background: #E8E8E8;
+}
+
+#addTodo::before {
+    content: "+";
+    font-size: 22px;
+    font-weight: 100;
+    left: 4px;
+    position: absolute;
+    top: -4.5px;
+}
+
+#todoInput {
+    border-width: 0px 0px 1px 0px;
+    border-color: #898989;
+    color: #898989;
+    border-style: solid;
+    height: 36px;
+    margin-left: 2px;
+    padding-left: 30px;
+    width: 260px;
+    font-size: 16px;
+    background: #F7F7F7;
+}
+
+h2.title {
+    margin: 0 10px;
+    font-weight: 400;
+    color: #898989;
+}
+
 .custom-radio {
     display: inline-block;
     margin-right: 10px;
@@ -56,21 +112,6 @@ input[type="checkbox"]:checked + span {
     width: 14px;
 }
 
-#app {
-    background: #F7F7F7 none repeat scroll 0 0;
-    border-radius: 10px;
-    margin: 65px;
-    max-width: 320px;
-    padding: 25px 15px;
-    border: 1px solid #898989;
-}
-
-h2.title {
-	margin: 0 10px;
-	font-weight: 400;
-	color: #898989;
-}
-
 .todo {
     list-style-type: none;
     padding-left: 14px;
@@ -93,45 +134,4 @@ h2.title {
 	margin-bottom: 15px;
     margin-top: 15px;
     padding-left: 14px;
-}
-
-#addTodo {
-    background: transparent none repeat scroll 0 0;
-    border: 1px solid #898989;
-    border-radius: 50px;
-    bottom: 8px;
-    color: #898989;
-    height: 22px;
-    padding: 0;
-    position: absolute;
-    text-align: center;
-    width: 22px;
-    cursor: pointer;
-    left: 1px;
-}
-
-#addTodo:hover {
-	background: #E8E8E8;
-}
-
-#todoInput {
-	border-width: 0px 0px 1px 0px;
-	border-color: #898989;
-	color: #898989;
-	border-style: solid;
-	height: 36px;
-	margin-left: 2px;
-	padding-left: 30px;
-	width: 260px;
-	font-size: 16px;
-	background: #F7F7F7;
-}
-
-#addTodo::before {
-    content: "+";
-    font-size: 22px;
-    font-weight: 100;
-    left: 4px;
-    position: absolute;
-    top: -4.5px;
 }
