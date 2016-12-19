@@ -121,7 +121,7 @@ const Filter = ({filter}) => {
 const FilterList = ({filters}) => {
 
     const filterItem = filters.map((filter) => {
-        return (<Filter filter={filter} key={filter.id} />)
+        return (<Filter filter={filter} key={filter.value} />)
     });
     return (<div className="filters">{filterItem}</div>);
 }
