@@ -1,4 +1,5 @@
 import {createStore} from './lib/state';
+//import { createStore } from 'redux';
 
 const initialState = {
     todos: [
@@ -67,8 +68,9 @@ function todoChangeHandler(state, change) {
             for(let filter of state.filters) {
                 filter.checked = (filter.value === change.filter) ? 'checked' : '';
             }
-
             break;
+        /*default:
+            return state;*/
 
     }
 }
@@ -77,4 +79,4 @@ if(localStorage.getItem("todos"))
     initialState.todos = JSON.parse(localStorage.getItem("todos"));
 
 
-export const todos = createStore(todoChangeHandler, initialState);
+export let todos = createStore(todoChangeHandler, initialState);

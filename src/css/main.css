@@ -4,6 +4,9 @@ html, body, .todo {
     font-family: sans-serif;
     color: #898989;
 }
+input:focus {
+    outline: none;
+}
 
 input[type=radio], input[type=checkbox] {
 	display: none;
