@@ -84,7 +84,7 @@ manter as alterações que fez, e explicar o motivo de não terminá-la ou o que
 
 ## As tarefas
 
-### WEB-101: Suportar a tecla ENTER no input para adicionar um TODO item
+### WEB-101: Suportar a tecla ENTER no input para adicionar um TODO item - DONE
 
 Nós gostaríamos de poder adicionar um todo item, usando a tecla `enter`.
 
@@ -96,7 +96,7 @@ para voltar o foco para ele.
 
 Por favor, garanta que ao adicionar um todo item, o foco irá voltar (ou manter-se) ao text field.
 
-### WEB-103: Adicione um filtro de status como TESTE
+### WEB-103: Adicione um filtro de status como TESTE - DONE
 
 Como um usuário, eu quero ter uma opção para esconder itens que não me interessam
 baseado nos seus status.
@@ -115,7 +115,7 @@ Estes radio buttons devem ser mutuamente exclusivos, apenas um deles pode ser se
 Ex.: se "Somente abertos" estiver selecionados, apenas os todo items que tiverem o `done` 
 setado como `false` devem ser mostrados. 
 
-### WEB-104: Adicione um TESTE para mudar a posição do filtro
+### WEB-104: Adicione um TESTE para mudar a posição do filtro - DONE
 
 Descobrimos que para usuários que tem o teste "renderBottom" habilitado, ficou difícil
 utilizar o filtro. Nossos especialistas UX entendem que quando os dois testes estão
@@ -127,7 +127,7 @@ está posicionado na posição de baixo na aplicação ("renderBottom").
 Este teste, pode se chamar "filterTop" e só pode ser ativado quando os testes "filter" e "renderBottom"
 estão ativos também. A hash da URL deve estar mais ou menos assim "index.html#filter#renderBottom#filterTop".
 
-### WEB-110: Melhore a aparência visual da aplicação
+### WEB-110: Melhore a aparência visual da aplicação - DONE
 
 Nosso departamento de design acredita que o design atual não é o melhor e pode ser melhorado. 
 
@@ -139,7 +139,7 @@ Sinta-se livre também para adicionar um pré-processador CSS como Sass, PostCSS
 Less ao build do webpack para tornar sua vida um pouco mais fácil.
 Usar CSS puro, também não é um problema. Faça como achar melhor.
 
-### WEB-120: Salve a lista de todo items
+### WEB-120: Salve a lista de todo items - DONE
 
 Nós gostaríamos agora, que a aplicação salvasse os todo items que o usuário adicionar.
 Assim quando ele atualizar a página, sua lista estará intacta e não irá perder nada.
@@ -150,7 +150,7 @@ a sua solução para isso funcione no Chrome e no Firefox.
 Se desejar, utilizar alguma tecnologia no back para salvar, apenas nos informe como
 iremos ligá-la para revisar e nos envies os fontes também.
 
-### WEB-201: Extraia o CSS em um arquivo separado
+### WEB-201: Extraia o CSS em um arquivo separado - DONE
 
 Atualmente, o CSS da aplicação está incluído no `bundle.js`.
 Entretanto, nossos usuários começaram a comentar sobre a aplicação estar
@@ -159,14 +159,18 @@ sem nenhum estilo quando inicia, e nós gostaríamos então de separar o CSS em 
 Por favor, integre o plugin `extract-text-webpack-plugin` na configuração do webpack
 e carregue o arquivo CSS separamente do bundle javascript.
 
-### WEB-202: Otimize a geração do bundle
+### WEB-202: Otimize a geração do bundle - DONE
 
 Atualmente nosso bundle gerado não está otimizado e está um pouco grande para uma 
 aplicação pequena. Por favor, ajuste as configurações do webpack para que possamos
 criar um bundle otimizado ao invés do bundle grande. Seria ideal se tanto Javascript
 e o CSS fossem minificados.
 
-### WEB-203: Substitua a lib/state.js
+### WEB-203: Substitua a lib/state.js - NOT DONE
+
+Consegui instalar e rodar a aplicação usando redux, mas depois de vários debugs
+por algum motivo que eu desconheço, o state da aplicação ficava 'undefined'. No geral
+eu me virei bem com esta tarefa, mas travei neste problema e não consegui dar continuidade.
 
 Acontece que nós não estamos imunes à "sindrome das libs não inventadas aqui", e 
 pensamos que seria uma boa ideia reimplementar uma lib popular atualmente.
@@ -177,7 +181,7 @@ fosse substituida pela lib original que à influenciou.
 A lib que nos influenciou foi o `Redux`. Por favor refatore o código atual
 para que use `Redux` invés do código que fizemos nós mesmos.
 
-### WEB-301: Otimize a renderização da view
+### WEB-301: Otimize a renderização da view  - DONE
 
 Infelizmente alguns dos nossos usuários começaram a reclamar que a performance
 da aplicação está ruim. Alguns deles disseram que adicionaram *mais mil* todo items
@@ -198,7 +202,7 @@ este problema de performance, fique à vontade. Nós achamos realmente interessa
 usar o React, pois esta é nossa stack atual. Se você decidir fazer isso, por favor escreva
 uma boa explanação do porque você escolheu usar outra biblioteca.
 
-### WEB-302: Compilação estática dos testes
+### WEB-302: Compilação estática dos testes  - DONE
 
 Nós gostaríamos de poder decidir na compilação do  bundle, se o teste "filter"
 deve ou não estar habilitado.
@@ -208,7 +212,7 @@ Por favor, crie um plugin babel que pode alterar estaticamente o código `isEnab
 
 Dica: Provavelmente você pode criar um webpack loader para isso.
 
-### WEB-303: Melhore a experiência do desenvolvedor
+### WEB-303: Melhore a experiência do desenvolvedor - TODO
 
 Nós fomos informados que nossos desenvolvedores não estão sendo tão produtivos quanto
 poderiam e precisam constantemente atualizar a página e esperar o webpack watcher acabar
