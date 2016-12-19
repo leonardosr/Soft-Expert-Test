@@ -1,86 +1,138 @@
 import {isEnabled} from './lib/feature';
+import {todos} from './state';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-export function render(el, state) {
+export function renderView(state) {
 
-    const filters = state.filters.map(renderFilterItem).join('');
-    const todoItems = state.todos.map(renderTodoItem).join('');
+    ReactDOM.render(<TodoApp />, document.getElementById('container'));
 
-    el.innerHTML = renderApp(
-        renderInput(),
-        renderTodos(todoItems),
-        renderFilters(filters)
+    document.getElementById("todoInput").focus();
+
+}
+
+class TodoApp extends React.Component{
+
+    constructor(props){
+
+        super(props);
+
+        this.state = todos.getState();
+
+    }
+
+    render(){
+
+        let section1 = null;
+        let section2 = null;
+        let section3 = null;
+
+        let input = <TodoInput />;
+        let filters = <FilterList filters={this.state.filters} />;
+        let todoList = <TodoList todos={this.state.todos} />;
+
+        if(!isEnabled('filter')) {
+            filters = null;
+        }
+
+        if(isEnabled('renderBottom')) {
+            if(isEnabled('filterTop')) {
+                section1 = filters;
+                section2 = todoList;
+                section3 = input;
+            } else {
+                section1 = todoList;
+                section2 = input;
+                section3 = filters;
+            }
+        } else {
+                section1 = input;
+                section2 = filters;
+                section3 = todoList;
+        }
+
+        <TodoInput />;
+        <FilterList filters={this.state.filters} />;
+        <TodoList todos={this.state.todos} />;
+
+        return (
+                <div id="app"><h2 className="title">Lista de Tarefas</h2>
+                    {section1}
+                    {section2}
+                    {section3}
+                </div>
+        );
+
+    }
+
+}
+
+class TodoInput extends React.Component{
+  render(){
+    return (
+        <div className="todo__input"><button id="addTodo">+</button><input type="text" id="todoInput" placeholder="Adicione uma nova tarefa" /></div>
     );
-
+  }
 }
 
-function renderApp(input, todoList, filters) {
+const Todo = ({todo}) => {
 
-    if(!isEnabled('filter')) {
-        filters = '';
-    }
+    let classComplement = todo.done ? 'done' : 'open';
 
-    if(isEnabled('renderBottom')) {
-        if(isEnabled('filterTop'))
-            return renderViews(filters, todoList, input);
-        else
-            return renderViews(todoList, input, filters);
-    } else {
-        console.log('aqui');
-        return renderViews(input, filters, todoList);
-    }
-
-}
-
-function renderViews(section1, section2, section3) {
-    return `<div id="app"><h2 class="title">Lista de Tarefas</h2>
-        ${section1}
-        ${section2}
-        ${section3}
-    </div>`;
-}
-
-function renderInput() {
-    return `<div class="todo__input"><button id="addTodo"></button><input type="text" id="todoInput" placeholder="Adicione uma nova tarefa"></div>`;
-}
-
-function renderTodos(todoItems) {
-    return `<ul class="todo">${todoItems}</ul>`;
-}
-
-function renderTodoItem(todo) {
-
-    const className = todo.done ? 'done' : 'open';
+    let className = "todo__item todo__item--" + classComplement;
 
     if(isEnabled('filter')) {
 
         let activeFilter = checkFilters();
 
-        if(activeFilter != 'all' && activeFilter != className)
-            return;
+        if(activeFilter != 'all' && activeFilter != classComplement)
+            return null;
 
     }
 
-    return `<li class="todo__item todo__item--${className}" style="display:list-item;">
-        <label class="custom-checkbox"><input class="js_toggle_todo" type="checkbox" data-id="${todo.id}"${todo.done ? ' checked' : ''}>
-        ${todo.text}<span></span>
-    </label></li>`;
+    return (
+        <li className={className}>
+            <label className="custom-checkbox">
+                <input className="js_toggle_todo" type="checkbox" data-id={todo.id} checked={todo.done ? 'checked' : ''}/>
+                    {todo.text}<span></span>
+            </label>
+        </li>
+    );
 }
 
-function renderFilters(flters) {
-    return `<div class="filters">${flters}</div>`;
+const TodoList = ({todos}) => {
+
+    const todoItem = todos.map((todo) => {
+        return (<Todo todo={todo} key={todo.id} />)
+    });
+    return (<ul className="todo">{todoItem}</ul>);
 }
 
-function renderFilterItem(filter) {
-    return `<label class="custom-radio"><input type="radio" class="filter" name="filter" id="${filter.value}" value="${filter.value}" ${filter.checked}>${filter.name}<span></span></label>`;
+const Filter = ({filter}) => {
+
+    return (
+        <label className="custom-radio">
+            <input type="radio" className="filter" name="filter" id={filter.value} value={filter.value} checked={filter.checked} />{filter.name}
+            <span></span>
+        </label>
+    );
+}
+
+const FilterList = ({filters}) => {
+
+    const filterItem = filters.map((filter) => {
+        return (<Filter filter={filter} key={filter.id} />)
+    });
+    return (<div className="filters">{filterItem}</div>);
 }
 
 function checkFilters() {
 
-    var filters = document.getElementsByClassName('filter');
+    let filters = document.getElementsByClassName('filter');
 
-    var filterChecked = 'all';
+    let filterChecked = 'all';
 
-    for(var i = 0; i != filters.length; ++i)
+    for(let i = 0; i != filters.length; ++i)
     {
         if(filters[i].checked)
             filterChecked = filters[i].value;

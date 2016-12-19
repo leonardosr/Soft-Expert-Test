@@ -46,14 +46,14 @@ input[type="checkbox"]:checked + span {
     background: #E8E8E8;
 }
 
-#addTodo::before {
+/*#addTodo::before {
     content: "+";
     font-size: 22px;
     font-weight: 100;
-    left: 4px;
-    position: absolute;
-    top: -4.5px;
-}
+    position: relative;
+    top: -2px;
+    display: inherit;
+}*/
 
 #todoInput {
     border-width: 0px 0px 1px 0px;

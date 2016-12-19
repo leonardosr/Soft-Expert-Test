@@ -4,11 +4,12 @@ import {addTodo, toggleTodoState, changeFilter} from './actions';
 
 export function registerEventHandlers() {
     listen('click', '#addTodo', event => {
+
         const todoInput = document.getElementById('todoInput');
 
         todos.dispatch(addTodo(todoInput.value));
 
-        document.getElementById("todoInput").focus();
+        document.getElementById("todoInput").value = '';
 
         event.stopPropagation();
     });
@@ -16,10 +17,12 @@ export function registerEventHandlers() {
     listen('keypress', '#todoInput', event => {
         const todoInput = document.getElementById('todoInput');
         
-        if(event.which == 13) 
+        if(event.which == 13) {
         	todos.dispatch(addTodo(todoInput.value));
 
-        document.getElementById("todoInput").focus();
+            document.getElementById("todoInput").value = '';
+            
+        }
         
         event.stopPropagation();
     });

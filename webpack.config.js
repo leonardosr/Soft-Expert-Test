@@ -17,7 +17,7 @@ module.exports = {
                 include: [path.resolve(__dirname, 'src', 'js')],
                 query: {
                     plugins: ['transform-runtime'],
-                    presets: ['es2015']
+                    presets: ['es2015', 'react']
                 }
             },
             {
@@ -29,7 +29,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("styles.css"),
-        new webpack.optimize.UglifyJsPlugin({minimize: true}),
+        //new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new webpack.optimize.DedupePlugin()
     ]
 };
