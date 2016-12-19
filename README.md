@@ -88,7 +88,7 @@ manter as alterações que fez, e explicar o motivo de não terminá-la ou o que
 
 Nós gostaríamos de poder adicionar um todo item, usando a tecla `enter`.
 
-### WEB-102: Adicionar um todo item causa perca de foco no text field
+### WEB-102: Adicionar um todo item causa perca de foco no text field - DONE
 
 Como nós habilitamos a tecla `enter` para adicionar um todo item, nossos usuários
 notaram que ao adicionar, o text field perde o foco e eles precisam clicar manualmente no input
@@ -202,7 +202,7 @@ este problema de performance, fique à vontade. Nós achamos realmente interessa
 usar o React, pois esta é nossa stack atual. Se você decidir fazer isso, por favor escreva
 uma boa explanação do porque você escolheu usar outra biblioteca.
 
-### WEB-302: Compilação estática dos testes  - DONE
+### WEB-302: Compilação estática dos testes - DONE
 
 Nós gostaríamos de poder decidir na compilação do  bundle, se o teste "filter"
 deve ou não estar habilitado.
